@@ -1,5 +1,3 @@
-[readme.md](https://github.com/user-attachments/files/35054748/readme.md)
-
 **TakeNamer** is a cross-platform desktop utility designed for film productions, editors, and sound recordists. It automatically transcribes the audio slate (clapperboard announcement) at the beginning of video and audio clips using OpenAI's Whisper (`faster-whisper`) and renames the files based on spoken Scene, Shot, and Take numbers.
 
 ---
