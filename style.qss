@@ -1,0 +1,4 @@
+QGridLayout{
+	qproperty-contentsMargins: 20 20 20 20;
+	qproperty-spacing: 15;
+}
