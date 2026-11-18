@@ -9,12 +9,37 @@ for %%d in (venv .venv env avenv) do (
     )
 )
 
-:: If no venv exists, create .venv
+:: If no venv exists, find a working Python executable and create .venv
 set "VENV_DIR=.venv"
 echo No valid virtual environment found. Creating one in '%VENV_DIR%'...
-python -m venv "%VENV_DIR%"
+
+set "SYS_PYTHON="
+python --version >nul 2>&1
+if not errorlevel 1 (
+    set "SYS_PYTHON=python"
+    goto :create_venv
+)
+
+py --version >nul 2>&1
+if not errorlevel 1 (
+    set "SYS_PYTHON=py"
+    goto :create_venv
+)
+
+python3 --version >nul 2>&1
+if not errorlevel 1 (
+    set "SYS_PYTHON=python3"
+    goto :create_venv
+)
+
+echo Error: Python is not installed or not found in PATH.
+pause
+exit /b 1
+
+:create_venv
+"%SYS_PYTHON%" -m venv "%VENV_DIR%"
 if errorlevel 1 (
-    echo Error: Python is not installed or not found in PATH.
+    echo Error: Failed to create virtual environment using %SYS_PYTHON%.
     pause
     exit /b 1
 )
