@@ -2,3 +2,7 @@ QGridLayout{
 	qproperty-contentsMargins: 20 20 20 20;
 	qproperty-spacing: 15;
 }
+
+QTableWidget[dragHover="true"] {
+    border: 2px dashed #3b82f6;
+}

@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QLineEdit, QDial
 from PyQt6 import uic
 
 from scripts import extract_audio_snippet, transcribe_clip, rename_file, folder_selection, process_folder, is_media_file, get_regex_pattern
-from classes import TakeRenameWorker
+from classes import TakeRenameWorker, DragDropTable
 
 WHISPER_MODELS = [
     ("Tiny (Fastest, Lowest Accuracy)", "tiny"),
@@ -56,10 +56,17 @@ class MainWindow(QMainWindow):
 
         self.tableWidget.cellClicked.connect(self.update_rename_input)
 
+        self.tableWidget.data.connect(self.handle_folder_select)
+
         self.transcript_time = self.time_spin.value()
 
-    def handle_folder_select(self):
-        self.files, self.folder_path = folder_selection(self)
+    def handle_folder_select(self, data = None):
+
+        if data:
+            self.files, self.folder_path = process_folder(data)
+
+        else:
+            self.files, self.folder_path = folder_selection(self)
 
         if self.files:
             self.tableWidget.setRowCount(len(self.files))

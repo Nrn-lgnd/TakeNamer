@@ -112,7 +112,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="DragDropTable" name="tableWidget">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -122,11 +122,20 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
       <property name="editTriggers">
        <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
       </property>
       <property name="tabKeyNavigation">
        <bool>true</bool>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragDropMode::DragDrop</enum>
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
@@ -296,6 +305,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DragDropTable</class>
+   <extends>QTableWidget</extends>
+   <header>classes</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

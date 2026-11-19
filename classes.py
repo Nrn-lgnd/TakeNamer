@@ -1,6 +1,8 @@
 import shutil
 
-from PyQt6.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import Qt, QThread, pyqtSignal
+from PyQt6.QtWidgets import QTableWidget
+
 from faster_whisper import WhisperModel
 from pathlib import Path
 
@@ -89,6 +91,60 @@ class TakeRenameWorker(QThread):
 
     def return_output_path(self):
         return self.output_file_path
+
+class DragDropTable(QTableWidget):
+    data = pyqtSignal(Path)
+    def __init__(self, parent: QWidget | None = None) -> None:
+        super().__init__(0, 1, parent)
+        self.files: list[str] = []
+        self.setAcceptDrops(True)
+        self.setDropIndicatorShown(True)
+        #self.setHorizontalHeaderLabels(["File Path"])
+        self.horizontalHeader().setStretchLastSection(True)
+
+    def _has_folder(self, mime: QMimeData | None) -> bool:
+        if mime is None or not mime.hasUrls():
+            return False
+        for url in mime.urls():
+            if url.isLocalFile() and Path(url.toLocalFile()).is_dir():
+                return True
+        return False
+
+    def dragEnterEvent(self, event: QDragEnterEvent) -> None:
+        if self._has_folder(event.mimeData()):
+            event.acceptProposedAction()
+        else:
+            event.ignore()
+
+    def dragMoveEvent(self, event: QDragMoveEvent) -> None:
+        if self._has_folder(event.mimeData()):
+            event.setDropAction(Qt.DropAction.CopyAction)
+            event.accept()
+        else:
+            event.ignore()
+
+    def dropEvent(self, event: QDropEvent) -> None:
+        mime = event.mimeData()
+        if not self._has_folder(mime):
+            event.ignore()
+            return
+
+        added = False
+        for url in mime.urls():
+            print(f"[dropEvent] url={url.toString()} | isLocal={url.isLocalFile()}")
+            if url.isLocalFile():
+                path = Path(url.toLocalFile())
+                #self.files.append(path)
+                # row = self.rowCount()
+                # self.insertRow(row)
+                # self.setItem(row, 0, QTableWidgetItem(path))
+                added = True
+
+        print(f"[dropEvent] total files stored: {len(self.files)}")
+        if added:
+            event.acceptProposedAction()
+
+        self.data.emit(path)
 
 
 
