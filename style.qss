@@ -1,8 +1,292 @@
-QGridLayout{
-	qproperty-contentsMargins: 20 20 20 20;
-	qproperty-spacing: 15;
+/* TakeNamer stylesheet - Unified Dracula KDE Theme */
+
+QMainWindow, QDialog {
+    background: #282a36;
+    color: #f8f8f2;
+    font-family: "Segoe UI", "Noto Sans", sans-serif;
+    font-size: 13px;
+}
+
+/* Elevated containers (slightly lighter than window) */
+QFrame#topFrame, QFrame#bottomFrame {
+    background: #2e303e;
+    border: 1px solid #3c3f52;
+    border-radius: 6px;
+}
+
+QLabel {
+    color: #a4a8c0;
+    font-size: 11px;
+    font-weight: bold;
+    background: transparent;
+}
+
+/* Recessed inputs (darker than frames) */
+QLineEdit, QPlainTextEdit, QSpinBox, QComboBox {
+    background: #21222c;
+    color: #f8f8f2;
+    border: 1px solid #44475a;
+    border-radius: 4px;
+    padding: 5px 8px;
+}
+
+QLineEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QComboBox:focus {
+    border-color: #bd93f9;
+}
+
+QLineEdit:read-only {
+    background: #252732;
+    color: #7982a8;
+    border-color: #363949;
+}
+
+QPlainTextEdit#transcript_display {
+    font-family: "Consolas", "Hack", monospace;
+    font-size: 12px;
+    color: #e2e4f0;
+}
+
+QComboBox {
+    padding-right: 30px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 28px;
+    border-left: 1px solid #44475a;
+    background: #2e303e;
+}
+
+QComboBox::down-arrow {
+    image: url(icons/arrow_down.svg);
+    width: 14px;
+    height: 14px;
+}
+
+QComboBox QAbstractItemView {
+    background: #282a36;
+    color: #f8f8f2;
+    border: 1px solid #bd93f9;
+    selection-background-color: #44475a;
+    selection-color: #f8f8f2;
+}
+
+QSpinBox {
+    padding-right: 26px;
+}
+
+QSpinBox::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    background: #2e303e;
+    border-left: 1px solid #44475a;
+    border-bottom: 1px solid #44475a;
+    width: 24px;
+}
+
+QSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    background: #2e303e;
+    border-left: 1px solid #44475a;
+    width: 24px;
+}
+
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background: #44475a;
+}
+
+QSpinBox::up-arrow {
+    image: url(icons/arrow_up.svg);
+    width: 12px;
+    height: 12px;
+}
+
+QSpinBox::down-arrow {
+    image: url(icons/arrow_down.svg);
+    width: 12px;
+    height: 12px;
+}
+
+/* Standard Buttons */
+QPushButton {
+    background: #383b4d;
+    color: #f8f8f2;
+    border: 1px solid #4d5168;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background: #44475a;
+    border-color: #bd93f9;
+}
+
+QPushButton:pressed {
+    background: #21222c;
+}
+
+QPushButton:disabled {
+    background: #252732;
+    color: #6272a4;
+    border-color: #343746;
+}
+
+/* Primary Action: Rich Dracula Purple */
+QPushButton#rename_button {
+    background: #7c56b8;
+    border-color: #bd93f9;
+    color: #f8f8f2;
+}
+
+QPushButton#rename_button:hover {
+    background: #8e67cc;
+    border-color: #d6baff;
+}
+
+QPushButton#rename_button:pressed {
+    background: #644399;
+}
+
+QPushButton#rename_button:disabled {
+    background: #342c45;
+    border-color: #433859;
+    color: #6d6885;
+}
+
+/* Secondary Action: Muted Dracula Teal/Green */
+QPushButton#update_button {
+    background: #2b7a53;
+    border-color: #50fa7b;
+    color: #f8f8f2;
+}
+
+QPushButton#update_button:hover {
+    background: #338f62;
+    border-color: #7aff9c;
+}
+
+QPushButton#update_button:pressed {
+    background: #216141;
+}
+
+QPushButton#update_button:disabled {
+    background: #243630;
+    border-color: #2f473f;
+    color: #627d73;
+}
+
+/* Table & vertical header */
+QTableWidget {
+    background: #21222c;
+    alternate-background-color: #262834;
+    color: #f8f8f2;
+    border: 1px solid #3c3f52;
+    border-radius: 6px;
+    gridline-color: #2e303e;
 }
 
 QTableWidget[dragHover="true"] {
-    border: 2px dashed #3b82f6;
+    border: 2px dashed #bd93f9;
+    background: #2d293e;
+}
+
+QTableWidget::item {
+    padding: 3px 6px;
+}
+
+QTableWidget::item:selected {
+    background: #44475a;
+    color: #f8f8f2;
+}
+
+QHeaderView {
+    background: #2e303e;
+    color: #a4a8c0;
+}
+
+QHeaderView::section {
+    background: #2e303e;
+    color: #a4a8c0;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px 6px;
+    border: none;
+    border-right: 1px solid #3c3f52;
+    border-bottom: 1px solid #3c3f52;
+}
+
+QTableCornerButton::section {
+    background: #2e303e;
+    border: none;
+    border-right: 1px solid #3c3f52;
+    border-bottom: 1px solid #3c3f52;
+}
+
+QProgressBar {
+    background: #21222c;
+    color: #f8f8f2;
+    border: 1px solid #44475a;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 11px;
+    min-height: 14px;
+}
+
+QProgressBar::chunk {
+    background: #7c56b8;
+    border-radius: 3px;
+}
+
+QScrollBar:vertical {
+    background: #21222c;
+    width: 10px;
+}
+
+QScrollBar::handle:vertical {
+    background: #44475a;
+    border-radius: 4px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #6272a4;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background: #21222c;
+    height: 10px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #44475a;
+    border-radius: 4px;
+    min-width: 20px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #6272a4;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/* Dialogs */
+QFileDialog, QFileDialog QTreeView, QFileDialog QListView {
+    background: #282a36;
+    color: #f8f8f2;
+    border: 1px solid #3c3f52;
+}
+
+QMenuBar, QStatusBar {
+    background: #21222c;
+    color: #a4a8c0;
+    border-bottom: 1px solid #3c3f52;
 }

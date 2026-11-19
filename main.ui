@@ -47,8 +47,11 @@
          <property name="showGroupSeparator" stdset="0">
           <bool>false</bool>
          </property>
+         <property name="maximum">
+          <number>300</number>
+         </property>
          <property name="value">
-          <number>15</number>
+          <number>30</number>
          </property>
         </widget>
        </item>
@@ -183,6 +186,43 @@
        <enum>QFrame::Shadow::Raised</enum>
       </property>
       <layout class="QGridLayout" name="verticalLayout" rowstretch="0,0,0,0" columnstretch="0,0,0,0,0">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="shot_edit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Shot</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="lineEdit_4">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>added_info</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="5">
+        <widget class="QPlainTextEdit" name="transcript_display">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="take_edit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Take</string>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="0" colspan="4">
         <widget class="QLineEdit" name="output_folder_input">
          <property name="text">
@@ -196,20 +236,13 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="5">
-        <widget class="QPlainTextEdit" name="transcript_display">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QLineEdit" name="lineEdit_4">
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="scene_edit">
          <property name="readOnly">
           <bool>true</bool>
          </property>
          <property name="placeholderText">
-          <string>added_info</string>
+          <string>Scene</string>
          </property>
         </widget>
        </item>
@@ -241,23 +274,10 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="scene_edit">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-         <property name="placeholderText">
-          <string>Scene</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLineEdit" name="take_edit">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-         <property name="placeholderText">
-          <string>Take</string>
+       <item row="1" column="4">
+        <widget class="QPushButton" name="update_button">
+         <property name="text">
+          <string>Update</string>
          </property>
         </widget>
        </item>
@@ -268,23 +288,6 @@
          </property>
          <property name="placeholderText">
           <string>standard: $n1-$n2-$n3.file_ending</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QPushButton" name="update_button">
-         <property name="text">
-          <string>Update</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="shot_edit">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-         <property name="placeholderText">
-          <string>Shot</string>
          </property>
         </widget>
        </item>
